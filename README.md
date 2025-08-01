@@ -8,6 +8,18 @@
 
 This is an enhanced version of [kinect-toolbox](https://github.com/nikwl/kinect-toolbox) with Python 3.10+ compatibility, Windows support, and intelligent pipeline selection. Built on [pylibfreenect2-py310](https://github.com/cerealkiller2527/pylibfreenect2-py310), it provides a simple, OpenCV-like interface for the Microsoft Kinect v2.
 
+## 🎯 Part of the GPU-Accelerated Kinect v2 Stack
+
+This is the **high-level API layer** of the complete Kinect v2 development stack:
+
+| Layer | Project | Description |
+|-------|---------|-------------|
+| **📦 Foundation** | [libfreenect2-modern](https://github.com/cerealkiller2527/libfreenect2-modern) | Core C++ driver with GPU pipelines |
+| **🐍 Python Bindings** | [pylibfreenect2-py310](https://github.com/cerealkiller2527/pylibfreenect2-py310) | Python 3.10+ interface with Cython bindings |
+| **🔧 High-Level API** | **kinect-toolbox-py310** (this project) | Easy-to-use Python wrapper with utilities |
+
+**Enhanced by [Madhav Lodha](https://madhavlodha.com)** - Check out my portfolio at [madhavlodha.com](https://madhavlodha.com) for more projects!
+
 ## ✨ Key Features
 
 - **🐍 Python 3.10+ Support**: Works with modern Python versions
@@ -296,18 +308,31 @@ fps = 30 / (time.time() - start_time)
 print(f"FPS: {fps:.1f}")
 ```
 
-## Related Projects
+## 🔗 Related Projects
 
-- **[pylibfreenect2-py310](https://github.com/cerealkiller2527/pylibfreenect2-py310)** - Python 3.10+ libfreenect2 bindings
-- **[libfreenect2-modern](https://github.com/cerealkiller2527/libfreenect2-modern)** - Complete libfreenect2 build guide  
-- **[Original kinect-toolbox](https://github.com/nikwl/kinect-toolbox)** - Python 3.6 version
-- **[OpenKinect/libfreenect2](https://github.com/OpenKinect/libfreenect2)** - Core C++ library
+### This Stack
+- **📦 [libfreenect2-modern](https://github.com/cerealkiller2527/libfreenect2-modern)** - Foundation C++ library with GPU acceleration
+- **🐍 [pylibfreenect2-py310](https://github.com/cerealkiller2527/pylibfreenect2-py310)** - Python 3.10+ bindings (automatically installed)
+
+### Original Projects
+- **[nikwl/kinect-toolbox](https://github.com/nikwl/kinect-toolbox)** - Original Python 3.6 version
+- **[OpenKinect/libfreenect2](https://github.com/OpenKinect/libfreenect2)** - Original core C++ library
+- **[r9y9/pylibfreenect2](https://github.com/r9y9/pylibfreenect2)** - Original Python bindings (2.7-3.5)
+
+### 🚀 Why This Stack?
+
+**Complete Solution**: This project automatically installs the entire stack:
+1. **libfreenect2-modern** build guide - Get GPU acceleration working
+2. **pylibfreenect2-py310** - Python 3.10+ compatibility fixes  
+3. **kinect-toolbox-py310** - Simple, OpenCV-like API
+
+**Result**: `pip install` → GPU-accelerated Kinect v2 with 25-35 FPS performance!
 
 ## License
 
 GPL-2.0 License - see [LICENSE](LICENSE) for details.
 
-Original work by [Nikolas Lamb](https://github.com/nikwl). Enhanced for Python 3.10+ compatibility with intelligent pipeline selection and cross-platform support.
+Original work by [Nikolas Lamb](https://github.com/nikwl). Enhanced for Python 3.10+ compatibility with intelligent pipeline selection and cross-platform support by [Madhav Lodha](https://madhavlodha.com).
 
 ---
 
