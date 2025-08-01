@@ -170,22 +170,46 @@ class Kinect():
     def _import_pipeline(headless=False):
         '''
             _import_pipeline: Imports the pylibfreenect2 pipeline based on
-                whether or not headless mode is enabled. Unfortunately 
-                more intelligent importing cannot be implemented (contrary
-                to the example scripts) because the import raises a C
-                exception, not a python one. As a result the only pipelines
-                this function will load are OpenGL or OpenCL.
+                whether or not headless mode is enabled. Tries to use the
+                best available pipeline with intelligent fallback.
             ARGUMENTS:
                 headless: bool
                     whether or not to run kinect in headless mode.
         '''
+        # Try pipelines in order of preference
+        pipeline_attempts = []
+        
         if headless:
-            from pylibfreenect2 import OpenCLPacketPipeline
-            pipeline = OpenCLPacketPipeline()
+            # For headless: try CUDA -> OpenCL -> CPU
+            pipeline_attempts = [
+                ('CudaPacketPipeline', 'CUDA'),
+                ('OpenCLPacketPipeline', 'OpenCL'), 
+                ('CpuPacketPipeline', 'CPU')
+            ]
         else:
-            from pylibfreenect2 import OpenGLPacketPipeline
-            pipeline = OpenGLPacketPipeline()
-        return pipeline
+            # For display: try CUDA -> OpenCL -> OpenGL -> CPU
+            pipeline_attempts = [
+                ('CudaPacketPipeline', 'CUDA'),
+                ('OpenCLPacketPipeline', 'OpenCL'),
+                ('OpenGLPacketPipeline', 'OpenGL'),
+                ('CpuPacketPipeline', 'CPU')
+            ]
+        
+        # Try each pipeline until one works
+        for pipeline_class, name in pipeline_attempts:
+            try:
+                module = __import__('pylibfreenect2', fromlist=[pipeline_class])
+                if hasattr(module, pipeline_class):
+                    pipeline_cls = getattr(module, pipeline_class)
+                    pipeline = pipeline_cls()
+                    print(f"✅ Using {name} pipeline")
+                    return pipeline
+            except Exception as e:
+                print(f"❌ {name} pipeline failed: {e}")
+                continue
+        
+        # If all else fails, raise an error
+        raise RuntimeError("No working pipeline found! Check your libfreenect2 installation.")
 
     @staticmethod
     def _load_camera_params(params_file=None):

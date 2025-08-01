@@ -1,0 +1,65 @@
+[build-system]
+requires = [
+    "setuptools>=64",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ktb-py310"
+version = "0.1.0"
+description = "Python 3.10+ compatible Kinect v2 wrapper built on pylibfreenect2-py310"
+readme = "README.md"
+license = {text = "GPL-2.0"}
+authors = [
+    {name = "Nikolas Lamb (original)", email = "nikolas.lamb@gmail.com"},
+    {name = "Enhanced for Python 3.10+"}
+]
+maintainers = [
+    {name = "Python 3.10+ Fork Maintainer", email = "your.email@example.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers", 
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+    "Operating System :: OS Independent",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux", 
+    "Operating System :: MacOS",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12", 
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Video :: Capture",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development",
+]
+keywords = ["kinect", "kinect-v2", "depth-camera", "computer-vision", "3d-vision", "point-cloud", "libfreenect2"]
+dependencies = [
+    "numpy>=1.19.0",
+    "opencv-python>=4.2.0.0", 
+    "packaging",
+]
+requires-python = ">=3.10"
+
+[project.urls]
+Homepage = "https://github.com/cerealkiller2527/kinect-toolbox-py310"
+Repository = "https://github.com/cerealkiller2527/kinect-toolbox-py310.git"
+"Bug Tracker" = "https://github.com/cerealkiller2527/kinect-toolbox-py310/issues"
+"Original Project" = "https://github.com/nikwl/kinect-toolbox" 
+"libfreenect2 Guide" = "https://github.com/cerealkiller2527/libfreenect2-modern"
+"pylibfreenect2-py310" = "https://github.com/cerealkiller2527/pylibfreenect2-py310"
+
+[project.optional-dependencies]
+docs = ["sphinx", "sphinx_rtd_theme"]
+test = ["pytest", "pytest-cov"]
+develop = ["black", "flake8", "mypy"]
+
+[tool.setuptools]
+zip-safe = false
+
+[tool.setuptools.packages.find]
+exclude = ["tests*", "examples*"]
