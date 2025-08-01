@@ -5,6 +5,9 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
+[tool.hatch.metadata]
+allow-direct-references = true
+
 [project]
 name = "ktb-py310"
 version = "0.1.0"
@@ -42,6 +45,7 @@ dependencies = [
     "numpy>=1.19.0",
     "opencv-python>=4.2.0.0", 
     "packaging",
+    "pylibfreenect2-py310 @ git+https://github.com/cerealkiller2527/pylibfreenect2-py310.git",
 ]
 requires-python = ">=3.10"
 

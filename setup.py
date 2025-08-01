@@ -16,9 +16,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/cerealkiller2527/kinect-toolbox-py310",
     packages=setuptools.find_packages(),
-    install_requires=requirements + [
-        'pylibfreenect2-py310 @ git+https://github.com/cerealkiller2527/pylibfreenect2-py310.git'
-    ],
+    install_requires=requirements,
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
