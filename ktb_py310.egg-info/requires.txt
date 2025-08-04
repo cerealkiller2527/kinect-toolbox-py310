@@ -1,0 +1,17 @@
+numpy>=1.19.0
+opencv-python>=4.2.0.0
+packaging
+pylibfreenect2-py310@ git+https://github.com/cerealkiller2527/pylibfreenect2-py310.git
+
+[develop]
+black
+flake8
+mypy
+
+[docs]
+sphinx
+sphinx_rtd_theme
+
+[test]
+pytest
+pytest-cov

@@ -202,10 +202,10 @@ class Kinect():
                 if hasattr(module, pipeline_class):
                     pipeline_cls = getattr(module, pipeline_class)
                     pipeline = pipeline_cls()
-                    print(f"✅ Using {name} pipeline")
+                    print(f"Using {name} pipeline")
                     return pipeline
             except Exception as e:
-                print(f"❌ {name} pipeline failed: {e}")
+                print(f"{name} pipeline failed: {e}")
                 continue
         
         # If all else fails, raise an error
